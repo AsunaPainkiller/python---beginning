@@ -1,26 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-void Greeting()
+﻿void Greeting()
 {
     Console.WriteLine("Здравствуйте, дорогой друг. Данная программа представляет из себя игру, в которой вам необходимо будет отгадать число");
     Console.WriteLine("Чтобы сгенерировать число, введите последовательно верхнюю и нижнюю границу диапазона возможных чисел");
 }
-/*int EnterHigh(int high = 100)
-{
-    Console.WriteLine("Верхняя граница:");
-    high = Convert.ToInt32(Console.ReadLine());
-    return high;
-}
-int EnterLow(int low = 0)
-{
-    Console.WriteLine("Нижняя граница:");
-    low = Convert.ToInt32(Console.ReadLine());
-    return low;
-}*/
-Greeting();
-/*int high = EnterHigh();
-int low = EnterLow();
-Console.WriteLine(high, low);*/
-int CreateNumber(int result)
+int CreateNumber(int result = 0)
 {
     Console.WriteLine("Верхняя граница:");
     int high = Convert.ToInt32(Console.ReadLine());
@@ -30,5 +13,37 @@ int CreateNumber(int result)
     result = r.Next(low, high);
     return result;
 }
+
+
+Greeting();
+Console.WriteLine("Для того чтобы угадать число у вас есть 10 попыток" );
 int num = CreateNumber(0);
-Console.WriteLine(num);
+int move(int motion = 10)
+{ 
+    while (motion > 0)
+    {
+        Console.WriteLine("Введите число:");
+        int isk = Convert.ToInt32(Console.ReadLine());
+        if (isk == num) 
+        {
+            Console.WriteLine("Вы угадали! Браво!");
+            motion = 0;
+            return motion;
+        }
+        if (isk > num)
+            {
+                Console.WriteLine("Ваше число больше загаданного");
+            }
+            else
+            {
+                Console.WriteLine("Ваше число меньше загаданного");
+            }
+        
+            Console.WriteLine($"Вы не угадали, осталось {motion--} попыток");
+    }
+        Console.WriteLine($"Ваши попытки закончились, а число так и не было угадано. Это было число {num}");
+        return motion;
+}
+move(10);
+
+
