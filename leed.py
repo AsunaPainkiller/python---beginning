@@ -1,2 +1,1 @@
-
-hi
+print('hello world')
